@@ -2,10 +2,6 @@ import express from 'express';
 var app = express();
 
 
-//something changed!!!
-
-
-
 app.get('/', (req, res) => {
     res.send('hello');
 })
