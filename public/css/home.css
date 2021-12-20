@@ -55,10 +55,12 @@ body {
     position: absolute;
     top: 90%;
     left: 50%;
-    opacity: 0;
     transform: translate(-50%, -50%);
-    animation: fadein 1.5s ease-in-out 2s infinite;
+    animation: fadein ease-in-out 2s;
     text-align: center;
+}
+.scroll-down:hover {
+    border: 1px solid white;
 }
 
 .scroll-down > a {
@@ -73,8 +75,8 @@ body {
 
 @keyframes fadein {
     0% { opacity: 0;}
-    50% { opacity: 1;}
-    100% { opacity: 0;}
+    100% { opacity: 1;}
+
 }
 
 /*Content*/
@@ -102,7 +104,6 @@ body {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    /* padding-bottom: 1rem; */
 }
 
 .treatment {
