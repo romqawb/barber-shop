@@ -1,8 +1,7 @@
+//APP INIT
 import express from 'express';
-var app = express();
-
-//hello from cmd!
-
+import path from 'path';
+const app = express();
 
 app.get('/', (req, res) => {
     res.send('hello');
