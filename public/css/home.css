@@ -15,6 +15,7 @@ body {
 
 .banner {
     color: white;
+    height: 100vh;
 }
 
 .banner > img {
@@ -82,21 +83,30 @@ body {
     height: 3000px; /* temporarily height */
 }
 
+
 #services > h1, #locations > h1 {
     font-size: 3rem;
     text-align: center;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
+#services {
+    box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+    padding: 1rem 0;
+}
+/* Treatments */
 .treatments-container {
+    position: relative;
     min-height: 100vh;
     width: 90%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    /* padding-bottom: 1rem; */
 }
 
 .treatment {
+    position: relative;
     text-align: center;
     padding: 1rem;
     width: 50%;
@@ -119,6 +129,7 @@ body {
 .treatment-info > h2 {
     font-size: 2rem;
     padding: 1rem;
+    text-shadow: 0.5px 0.5px brown;
 }
 
 .treatment-info > h3 {
@@ -140,14 +151,6 @@ body {
     padding: 0.25rem;
 }
 
-
-#locations {
-    height: 700px;
-    background-color: black;
-    color: beige;
-    border: 1px solid black;
-}
-
 .price {
     margin: 1rem;
     letter-spacing: 0.75px;
@@ -157,7 +160,27 @@ body {
     color: brown;
 }
 
-.scissors {
+.scissors-y-axis {
     text-align: center;
     transform: rotate(90deg);
+    position: relative;
+    left: -1px;
 }
+.scissors-x-axis {
+    text-align: center;
+    transform: rotate(-90deg);
+    position: relative;
+    left: 1px;
+}
+
+
+
+/* Locations */
+
+#locations {
+    height: 700px;
+    background-color: black;
+    color: beige;
+    border: 1px solid black;
+}
+
