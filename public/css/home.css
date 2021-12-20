@@ -59,9 +59,6 @@ body {
     animation: fadein ease-in-out 2s;
     text-align: center;
 }
-.scroll-down:hover {
-    border: 1px solid white;
-}
 
 .scroll-down > a {
     text-decoration: none;
@@ -69,7 +66,9 @@ body {
     letter-spacing: 1px;
 }
 
-.scroll-arrow {
+h3.scroll-arrow {
+    width: 10%;
+    margin: 0 auto;
     transform: rotate(90deg);
 }
 
@@ -81,15 +80,10 @@ body {
 
 /*Content*/
 
-.content {
-    height: 3000px; /* temporarily height */
-}
-
-
 #services > h1, #locations > h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
-    /* padding: 1rem; */
+    padding: 1rem;
 }
 
 #services {
@@ -161,17 +155,15 @@ body {
     color: brown;
 }
 
-.scissors-y-axis {
+.scissors-y-axis, .scissors-x-axis  {
     text-align: center;
-    transform: rotate(90deg);
-    position: relative;
-    left: -1px;
 }
-.scissors-x-axis {
-    text-align: center;
+.scissors-y-axis > i {
+    transform: rotate(90deg);
+}
+
+.scissors-x-axis > i {
     transform: rotate(-90deg);
-    position: relative;
-    left: 1px;
 }
 
 
