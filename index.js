@@ -1,6 +1,10 @@
 //APP INIT
 import express from 'express';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config()
+
+
 const __dirname = path.resolve();
 const app = express();
 

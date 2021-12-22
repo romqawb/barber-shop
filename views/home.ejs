@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -109,6 +111,7 @@
             <article id='locations'>
                 <h1>Locations</h1>
                 <div class='location-map'>
+                    <div id='map'></div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus a, nihil quaerat nemo
                         recusandae molestias explicabo dolorem expedita odio accusantium ipsa cupiditate ad est minima.
                         Eos quibusdam officia fugit. Earum vel sit amet ex tempora adipisci quasi quas officiis id a
@@ -130,6 +133,10 @@
             </article>
         </main>
     </div>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    </script>
+    <script src='/js/map.js'></script>
 </body>
 
 </html>

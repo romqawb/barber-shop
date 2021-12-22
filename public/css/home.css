@@ -177,3 +177,8 @@ h3.scroll-arrow {
     border: 1px solid black;
 }
 
+#map {
+    height: 300px;
+    width: 90%;
+    margin: 1rem auto;
+}
