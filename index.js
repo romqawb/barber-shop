@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Shop from './models/shop.js';
 import geo from 'mapbox-geocoding';
+import ejsMate from 'ejs-mate';
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
 
@@ -19,7 +20,6 @@ try {
 } catch (e) {
     console.log(e)
 }
-
 // db.on('error', console.error.bind(console, 'connection error'))
 // db.once('open', () => console.log('DB connected successfully!'))
 
@@ -28,10 +28,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.engine('ejs', ejsMate);
 
 app.get('/', async (req, res) => {
-    const shops = await Shop.find({})
-    console.log(shops)
+    let shops = await Shop.find({})
     res.render('home', { shops });
 })
 
@@ -44,8 +44,8 @@ app.post('/shop', async (req, res) => {
     geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
         newShop.geometry = geoData.features[0].geometry;
         await newShop.save()
+        res.redirect('/');
     });
-    res.redirect('/');
 })
 
 app.listen(3000, () => {

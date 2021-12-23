@@ -182,3 +182,70 @@ h3.scroll-arrow {
     width: 90%;
     margin: 1rem auto;
 }
+
+
+/*create new shop form*/
+.create-shop {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/barber-shop-chairs.jpeg');
+    background-position: center;
+}
+
+#create-shop {
+    width: 450px;
+    background-color: rgba(255,255,255,0.4);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px black, 2px 2px 2px black;
+}
+#create-shop > h1 {
+    text-align: center;
+}
+#create-shop > div {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    
+}
+
+#create-shop > div > label {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#create-shop > div > input {
+    height: 2.5rem;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+#create-shop > div > button {
+    width: 90%;
+    margin: 1rem auto 0 auto;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: 'Staatliches', cursive;
+    border-radius: 5px;
+    background-color: brown;
+    color: white;
+
+}
+#create-shop > div > button:hover {
+    cursor: pointer;
+}
+
+#prices-services {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+}

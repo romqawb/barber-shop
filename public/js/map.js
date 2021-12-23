@@ -3,10 +3,11 @@ const parsedData = JSON.parse(data);
 const shops = {
     features: parsedData
 }
+
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    center: [-0.1754412, 51.4939331] || shops.features[0].geometry.coordinates, // starting position [lng, lat]
+    center: [-0.127805, 51.507606], // starting position [lng, lat]
     zoom: 12 // starting zoom
 });
 
@@ -59,16 +60,16 @@ map.on('load', function () {
             'text-size': 12
         }
     });
-
+    //amend here to change circle appearance
     map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
         source: 'shops',
         filter: ['!', ['has', 'point_count']],
         paint: {
-            'circle-color': '#11b4da',
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
+            'circle-color': 'brown',
+            'circle-radius': 10,
+            'circle-stroke-width': 3,
             'circle-stroke-color': '#fff'
         }
     });
@@ -102,7 +103,9 @@ map.on('load', function () {
         new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(
-                `<a href='/shops/${e.features[0].properties.id}'><h3>${e.features[0].properties.title}</h3></a>`
+                `<div>
+                <a href='/shop/${e.features[0].properties.id}'><h3>${e.features[0].properties.name}</h3></a>
+                </div>`
             )
             .addTo(map);
     });

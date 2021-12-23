@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+const options = { toJSON: { virtuals: true } }
 const shopSchema = new Schema({
     name: String,
     address: String,
@@ -18,6 +19,17 @@ const shopSchema = new Schema({
             type: [Number],
         }
     }
+}, options)
+shopSchema.virtual('properties.id').get(function () {
+    return this._id
 })
+
+shopSchema.virtual('properties.name').get(function () {
+    return this.name
+})
+shopSchema.virtual('properties.prices').get(function () {
+    return this.prices
+})
+
 
 export default mongoose.model('Shop', shopSchema);

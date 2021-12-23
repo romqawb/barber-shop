@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starting Page</title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
-</head>
-
-<body>
+<%layout ('layouts/boilerplate') %>
     <div class='content-wrapper'>
         <div class='banner'>
             <img src='/images/main-banner.jpg' alt='barber shop image' />
@@ -138,6 +123,3 @@
         const data = '<%- JSON.stringify(shops) %>';
     </script>
     <script src='/js/map.js'></script>
-</body>
-
-</html>
