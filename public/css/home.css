@@ -18,11 +18,11 @@ body {
     height: 100vh;
 }
 
-.banner > img {
+.image-container {
     height: 100vh;
     width: 100%;
-    object-fit: cover;
-    z-index: -1;
+    background-image: url('../images/barber-shop-main.jpeg');
+    background-position: center;
 }
 
 .intro-text {
@@ -31,7 +31,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(0,0,0,0.7);
     padding: 2rem;
 }
 
@@ -56,7 +56,7 @@ body {
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: fadein ease-in-out 2s;
+    animation: fadein ease-in-out 3s infinite;
     text-align: center;
 }
 
@@ -74,7 +74,8 @@ h3.scroll-arrow {
 
 @keyframes fadein {
     0% { opacity: 0;}
-    100% { opacity: 1;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
 
 }
 
@@ -92,8 +93,6 @@ h3.scroll-arrow {
 }
 /* Treatments */
 .treatments-container {
-    position: relative;
-    min-height: 100vh;
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -101,7 +100,6 @@ h3.scroll-arrow {
 }
 
 .treatment {
-    position: relative;
     text-align: center;
     padding: 1rem;
     width: 50%;
@@ -171,40 +169,64 @@ h3.scroll-arrow {
 /* Locations */
 
 #locations {
-    height: 700px;
+    min-height: 100vh;
     background-color: black;
     color: beige;
     border: 1px solid black;
 }
 
+#locations > h2 {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
 #map {
     height: 300px;
     width: 90%;
-    margin: 1rem auto;
+    margin: 0rem auto;
+    border: 2px solid rgba(165,42,42,0.7);
 }
 
 
 /*create new shop form*/
 .create-shop {
     display: flex;
+    flex-direction: column;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-image: url('../images/barber-shop-chairs.jpeg');
+    background-image: url('../images/barber-shop-chairs.jpg');
     background-position: center;
+    background-size: cover;
 }
 
 #create-shop {
     width: 450px;
-    background-color: rgba(255,255,255,0.4);
-    margin-top: 3rem;
+    background-color: rgba(0,0,0,0.7);
+    margin: 1rem 0;
     padding: 1.5rem 0;
     color: white;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px black, 2px 2px 2px black;
+    border-radius: 5px;
 }
-#create-shop > h1 {
+.create-shop > div > h1 {
     text-align: center;
+    color: white;
+    font-size: 3rem;
+    background-color: rgba(0,0,0,0.7);
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+}
+
+.create-shop > div > h1 > a {
+    text-decoration: none;
+    color: white;
+    z-index: 1;
+}
+
+.create-shop > div > h1:hover {
+    background-color: rgba(0,0,0,0.8);
 }
 #create-shop > div {
     display: flex;
@@ -221,11 +243,21 @@ h3.scroll-arrow {
     margin: 0 auto;
 }
 
+
 #create-shop > div > input {
     height: 2.5rem;
     width: 90%;
     margin: 0 auto;
-    padding: 5px;
+    padding: 10px;
+    color: brown;
+}
+
+#create-shop > div > input::placeholder {
+    color: brown; 
+}
+
+#create-shop > div > input:focus {
+    outline-color: brown;
 }
 
 #create-shop > div > button {
@@ -236,16 +268,84 @@ h3.scroll-arrow {
     font-size: 1.5rem;
     font-family: 'Staatliches', cursive;
     border-radius: 5px;
-    background-color: brown;
+    background-color: rgba(165,42,42,0.9);
     color: white;
-
+    border: none;
 }
+
 #create-shop > div > button:hover {
     cursor: pointer;
+    background-color: brown;
 }
 
-#prices-services {
+ .section-description {
+    color: brown;
+ 
+}
+#create-shop > .section-description > label {
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+/* Barber shops on a main page */
+
+#barber-shops {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 1rem auto;
+
+}
+
+.shop {
+    width: 30%;
+    margin: calc(10% / 6);
+    /* border: 1px solid brown; */
+    box-shadow: 0 0 5px rgba(0,0,0,0.9) inset;
+    background-color: beige;
+    color: black;
     text-align: center;
     padding: 1rem;
-    font-size: 2rem;
+}
+
+.shop > h2, .shop > h4 {
+    letter-spacing: 1px;
+}
+
+.shop > h4 {
+    color: rgba(0,0,0,0.7);
+    padding: 0.25rem;
+}
+
+.shop > ul {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.shop > ul > li {
+    text-align: center;
+    display: block;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0.1rem;
+}
+
+.shop > ul > li > i.scissors-price {
+    color: brown;
+
+}
+
+.shop > .shop-link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(165,42,42,0.7);
+    padding: 5px;
+    margin: 0.5rem;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.shop > .shop-link:hover {
+    background-color: brown;
 }

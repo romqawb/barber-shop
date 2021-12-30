@@ -1,21 +1,25 @@
 <%layout ('layouts/boilerplate') %>
     <div class='content-wrapper'>
         <div class='banner'>
-            <img src='/images/main-banner.jpg' alt='barber shop image' />
-            <div class='intro-text'>
-                <h1>Best Barbers in Town</h1>
-                <hr />
-                <h3>Treat yourself and your hair in our magnificent chain of barber shops located all around london</h3>
+            <!-- <img src='/images/main-banner.jpg' alt='barber shop image' /> -->
+            <div class='image-container'>
+                <div class='intro-text'>
+                    <h1>Best Barbers in Town</h1>
+                    <hr />
+                    <h3>Treat yourself and your hair in our magnificent chain of barber shops located all around london
+                    </h3>
+                </div>
+                <div class='scroll-down'>
+                    <a href='#services'>
+                        <h3>Scroll down</h3>
+                    </a>
+                    <h3 class='scroll-arrow'><span>></span></h3>
+                </div>
             </div>
-            <div class='scroll-down'>
-                <a href='#services'>
-                    <h3>Scroll down</h3>
-                </a>
-                <h3 class='scroll-arrow'><span>></span></h3>
-            </div>
+
         </div>
         <main class='content'>
-            <article id='services'>
+            <section id='services'>
                 <h1>Treatments</h1>
                 <div class='scissors-y-axis'><i class="fas fa-cut"></i></div>
                 <div class='treatments-container'>
@@ -92,30 +96,32 @@
                     </div>
                 </div>
                 <div class='scissors-x-axis'><i class="fas fa-cut"></i></div>
-            </article>
-            <article id='locations'>
+            </section>
+            <section id='locations'>
                 <h1>Locations</h1>
-                <div class='location-map'>
-                    <div id='map'></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus a, nihil quaerat nemo
-                        recusandae molestias explicabo dolorem expedita odio accusantium ipsa cupiditate ad est minima.
-                        Eos quibusdam officia fugit. Earum vel sit amet ex tempora adipisci quasi quas officiis id a
-                        hic, eos natus perspiciatis perferendis temporibus? Neque ipsum aliquid deleniti saepe dolorum,
-                        at quia nulla unde ea in quod? Consequatur reiciendis quia ab vel quisquam ipsa perferendis eius
-                        accusantium. Dolorem, laudantium accusantium tenetur suscipit quibusdam totam pariatur sit eos
-                        quis rem similique ipsa nesciunt cumque incidunt optio hic ullam praesentium. Necessitatibus
-                        pariatur libero voluptatum ducimus adipisci praesentium. Deserunt inventore delectus dolores
-                        officiis, neque sit similique fuga totam quo aperiam incidunt quaerat molestias molestiae a
-                        accusantium! Nihil quaerat voluptatum similique recusandae veniam, repellendus delectus dolorum
-                        ipsum necessitatibus aliquid fuga totam aliquam laudantium omnis dolor. Dolorum voluptates
-                        possimus similique nostrum in assumenda odio quo eaque dolorem, nam velit facere aliquid minus,
-                        perferendis voluptatem. Tempora illum pariatur voluptatibus perspiciatis. Hic illo voluptates
-                        dolores? Veniam, labore magni? Asperiores, earum quibusdam. Commodi deserunt nulla sint, dolorum
-                        quo accusantium? Nostrum adipisci nisi assumenda officia voluptates enim quae placeat quasi,
-                        debitis sit eum esse amet ipsam consequuntur excepturi, perspiciatis voluptatum laboriosam ipsa
-                        odit? Voluptatibus, eum eveniet?</p>
+                <h2>Visit us at one of our branches across London</h2>
+                <div id='map'></div>
+                <div id='barber-shops'>
+                    <% shops.map(shop=> { %>
+                        <div class='shop'>
+                            <h2>
+                                <%= shop.name %>
+                            </h2>
+                            <h4>
+                                <%= shop.address%>
+                            </h4>
+                            <h3>Price list:</h3>
+                            <ul>
+                                <li><i class="fas fa-cut scissors-price"></i>- The Cut: <%=shop.prices.cut%>$</li>
+                                <li><i class="fas fa-cut scissors-price"></i>- The Beard: <%=shop.prices.beard%>$</li>
+                                <li><i class="fas fa-cut scissors-price"></i>- The Shave: <%=shop.prices.shave%>$</li>
+                                <li><i class="fas fa-cut scissors-price"></i>- The Shape: <%=shop.prices.shape%>$</li>
+                            </ul>
+                            <a class='shop-link' href='#'>View Shop</a>
+                        </div>
+                        <%})%>
                 </div>
-            </article>
+            </section>
         </main>
     </div>
     <script>

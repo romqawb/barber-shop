@@ -1,17 +1,22 @@
 <%layout ('layouts/boilerplate') %>
     <div class='create-shop'>
-        <form id='create-shop' action='/shop' method='POST'>
+        <div>
             <h1>Create new barber shop</h1>
+        </div>
+        <form id='create-shop' action='/shop' method='POST'>
+            <div class='section-description'>
+                <label>Shop info</label>
+            </div>
             <div>
                 <label for='name'>Shop name:</label>
-                <input type='text' id='name' name='shop[name]' placeholder='Enter shops name' required />
+                <input type='text' id='name' name='shop[name]' placeholder='Enter shop name' required />
             </div>
             <div>
                 <label for='address'>Shop address:</label>
-                <input type='text' id='address' name='shop[address]' placeholder='Enter shops address' required />
+                <input type='text' id='address' name='shop[address]' placeholder='Enter shop address' required />
             </div>
-            <div>
-                <label id='prices-services'>Prices for services</label>
+            <div class='section-description'>
+                <label>Prices for services</label>
             </div>
             <div>
                 <label for='cut'>Cut price:</label>
@@ -33,6 +38,9 @@
                 <button type='submit'>Create Shop</button>
             </div>
         </form>
+        <div>
+            <h1><a href='http://localhost:3000'>Go Back</a></h1>
+        </div>
     </div>
     </body>
 

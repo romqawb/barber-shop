@@ -6,9 +6,9 @@ import mongoose from 'mongoose';
 import Shop from './models/shop.js';
 import geo from 'mapbox-geocoding';
 import ejsMate from 'ejs-mate';
+
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
-
 
 const __dirname = path.resolve();
 const app = express();
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.engine('ejs', ejsMate);
 
 app.get('/', async (req, res) => {
-    let shops = await Shop.find({})
+    const shops = await Shop.find({})
     res.render('home', { shops });
 })
 
