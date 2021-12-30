@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import Shop from './models/shop.js';
 import geo from 'mapbox-geocoding';
 import ejsMate from 'ejs-mate';
+import methodOverride from 'method-override';
 
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
@@ -28,6 +29,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
 
 app.get('/', async (req, res) => {
@@ -36,7 +38,26 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/shop/new', (req, res) => {
-    res.render('createshop');
+    res.render('shop/create');
+})
+
+app.get('/shop/:id/edit', async (req, res) => {
+    const { id } = req.params;
+    const requestedShop = await Shop.findById(id);
+    res.render('shop/edit', { requestedShop })
+})
+
+app.put('/shop/:id', async (req, res) => {
+    const { id } = req.params;
+    const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
+    await updatedShop.save();
+    res.redirect('/');
+})
+
+app.get('/shop/:id', async (req, res) => {
+    const { id } = req.params;
+    const requestedShop = await Shop.findById(id);
+    res.json(requestedShop);
 })
 
 app.post('/shop', async (req, res) => {

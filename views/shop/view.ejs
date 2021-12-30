@@ -1,0 +1,47 @@
+<%layout ('layouts/boilerplate') %>
+    <div class='create-shop'>
+        <div>
+            <h1>Create new barber shop</h1>
+        </div>
+        <form id='create-shop' action='/shop' method='POST'>
+            <div class='section-description'>
+                <label>Shop info</label>
+            </div>
+            <div>
+                <label for='name'>Shop name:</label>
+                <input type='text' id='name' name='shop[name]' placeholder='Enter shop name' required />
+            </div>
+            <div>
+                <label for='address'>Shop address:</label>
+                <input type='text' id='address' name='shop[address]' placeholder='Enter shop address' required />
+            </div>
+            <div class='section-description'>
+                <label>Prices for services</label>
+            </div>
+            <div>
+                <label for='cut'>Cut price:</label>
+                <input type='number' id='cut' name='shop[prices][cut]' placeholder='Enter price for a cut' />
+            </div>
+            <div>
+                <label for='beard'>Beard price:</label>
+                <input type='number' id='beard' name='shop[prices][beard]' placeholder='Enter price for a bear' />
+            </div>
+            <div>
+                <label for='shave'>Shave price:</label>
+                <input type='number' id='shave' name='shop[prices][shave]' placeholder='Enter price for a shave' />
+            </div>
+            <div>
+                <label for='shape'>Shape price:</label>
+                <input type='number' id='shape' name='shop[prices][shape]' placeholder='Enter price for a shape' />
+            </div>
+            <div>
+                <button type='submit'>Create Shop</button>
+            </div>
+        </form>
+        <div>
+            <h1><a href='http://localhost:3000'>Go Back</a></h1>
+        </div>
+    </div>
+    </body>
+
+    </html>
