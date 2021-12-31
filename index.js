@@ -34,7 +34,7 @@ app.engine('ejs', ejsMate);
 
 app.get('/', async (req, res) => {
     const shops = await Shop.find({})
-    res.render('home', { shops });
+    res.render('index', { shops });
 })
 
 app.get('/shop/new', (req, res) => {
@@ -49,15 +49,18 @@ app.get('/shop/:id/edit', async (req, res) => {
 
 app.put('/shop/:id', async (req, res) => {
     const { id } = req.params;
-    const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
-    await updatedShop.save();
-    res.redirect('/');
+    geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
+        const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
+        updatedShop.geometry = geoData.features[0].geometry;
+        await updatedShop.save()
+        res.redirect('/');
+    });
 })
 
 app.get('/shop/:id', async (req, res) => {
     const { id } = req.params;
     const requestedShop = await Shop.findById(id);
-    res.json(requestedShop);
+    res.render('shop/view', { requestedShop })
 })
 
 app.post('/shop', async (req, res) => {
