@@ -1,47 +1,55 @@
 <%layout ('layouts/boilerplate') %>
     <div class='create-shop'>
         <div>
-            <h1>Create new barber shop</h1>
+            <h1>
+                <%=shop.name%>
+            </h1>
         </div>
-        <form id='create-shop' action='/shop' method='POST'>
+        <div id='create-shop'>
             <div class='section-description'>
-                <label>Shop info</label>
-            </div>
-            <div>
-                <label for='name'>Shop name:</label>
-                <input type='text' id='name' name='shop[name]' placeholder='Enter shop name' required />
-            </div>
-            <div>
-                <label for='address'>Shop address:</label>
-                <input type='text' id='address' name='shop[address]' placeholder='Enter shop address' required />
+                <h2>Location</h2>
+                <div id='map'></div>
             </div>
             <div class='section-description'>
-                <label>Prices for services</label>
+                <p>
+                    <%= shop.address %>
+                </p>
             </div>
-            <div>
-                <label for='cut'>Cut price:</label>
-                <input type='number' id='cut' name='shop[prices][cut]' placeholder='Enter price for a cut' />
+            <div class='section-description'>
+                <h2>Price list</h2>
+                <ul class='price-list'>
+                    <li>
+                        The Cut: <%=shop.prices.cut%>$
+                    </li>
+                    <li>
+                        The Beard: <%=shop.prices.beard%>$
+                    </li>
+                    <li>
+                        The Shave: <%=shop.prices.shave%>$
+                    </li>
+                    <li>
+                        The Shape: <%=shop.prices.shape%>$
+                    </li>
+                </ul>
             </div>
-            <div>
-                <label for='beard'>Beard price:</label>
-                <input type='number' id='beard' name='shop[prices][beard]' placeholder='Enter price for a bear' />
+            <div id='shop-buttons'>
+                <div id='shop-edit'>
+                    <a href='/shop/<%=shop._id%>/edit'>Edit</a>
+                </div>
+                <form id='shop-delete' action='/shop/<%=shop._id%>?_method=DELETE' method='POST'>
+                    <button type='submit'>Delete</button>
+                </form>
             </div>
-            <div>
-                <label for='shave'>Shave price:</label>
-                <input type='number' id='shave' name='shop[prices][shave]' placeholder='Enter price for a shave' />
-            </div>
-            <div>
-                <label for='shape'>Shape price:</label>
-                <input type='number' id='shape' name='shop[prices][shape]' placeholder='Enter price for a shape' />
-            </div>
-            <div>
-                <button type='submit'>Create Shop</button>
-            </div>
-        </form>
+        </div>
         <div>
-            <h1><a href='http://localhost:3000'>Go Back</a></h1>
+            <a href='http://localhost:3000'>Go Back</a>
         </div>
     </div>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const data = '<%- JSON.stringify(shop) %>';
+    </script>
+    <script src='/js/map.js'></script>
     </body>
 
     </html>

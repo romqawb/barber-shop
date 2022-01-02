@@ -53,14 +53,20 @@ app.put('/shop/:id', async (req, res) => {
         const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
         updatedShop.geometry = geoData.features[0].geometry;
         await updatedShop.save()
-        res.redirect('/');
+        res.redirect(`/shop/${id}`);
     });
 })
 
 app.get('/shop/:id', async (req, res) => {
     const { id } = req.params;
     const requestedShop = await Shop.findById(id);
-    res.render('shop/view', { requestedShop })
+    res.render('shop/view', { shop: requestedShop })
+})
+
+app.delete('/shop/:id', async (req, res) => {
+    const { id } = req.params;
+    await Shop.findByIdAndDelete(id);
+    res.redirect('/');
 })
 
 app.post('/shop', async (req, res) => {
