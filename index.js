@@ -34,7 +34,19 @@ app.engine('ejs', ejsMate);
 
 app.get('/', async (req, res) => {
     const shops = await Shop.find({})
-    res.render('index', { shops });
+    const minPrices = {
+        cut: shops[0] ? shops[0].prices.cut : 0,
+        beard: shops[0] ? shops[0].prices.beard : 0,
+        shave: shops[0] ? shops[0].prices.shave : 0,
+        shape: shops[0] ? shops[0].prices.shape : 0
+    }
+    shops.map(shop => {
+        shop.prices.cut < minPrices.cut ? minPrices.cut = shop.prices.cut : null;
+        shop.prices.beard < minPrices.beard ? minPrices.beard = shop.prices.beard : null;
+        shop.prices.shave < minPrices.shave ? minPrices.shave = shop.prices.shave : null;
+        shop.prices.shape < minPrices.shape ? minPrices.shape = shop.prices.shape : null;
+    })
+    res.render('index', { shops, minPrices });
 })
 
 app.get('/shop/new', (req, res) => {
