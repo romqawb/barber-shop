@@ -7,6 +7,7 @@ import Shop from './models/shop.js';
 import geo from 'mapbox-geocoding';
 import ejsMate from 'ejs-mate';
 import methodOverride from 'method-override';
+import favicon from 'serve-favicon';
 
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
+app.use(favicon(path.join(__dirname, 'public/images/favicon.png')))
 
 app.get('/', async (req, res) => {
     const shops = await Shop.find({})

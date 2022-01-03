@@ -84,7 +84,7 @@ h3.scroll-arrow {
 }
 
 /*Content*/
-#services > h1, #locations > h1 {
+#services > h2, #locations > h2 {
     font-size: 4rem;
     text-align: center;
     padding: 1rem;
@@ -167,7 +167,7 @@ h3.scroll-arrow {
     border: 1px solid black;
 }
 
-#locations > h2 {
+#locations > h3 {
     text-align: center;
     padding-bottom: 1rem;
 }
