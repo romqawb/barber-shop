@@ -90,6 +90,10 @@ app.post('/shop', async (req, res) => {
     });
 })
 
+app.get('*', (req, res) => {
+    res.render('notFound')
+})
+
 app.listen(3000, () => {
     console.log('up');
 })

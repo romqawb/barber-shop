@@ -1,7 +1,6 @@
 <%layout ('layouts/boilerplate') %>
     <div class='content-wrapper'>
         <div class='banner'>
-            <!-- <img src='/images/main-banner.jpg' alt='barber shop image' /> -->
             <div class='image-container'>
                 <div class='intro-text'>
                     <h1>Best Barbers in Town</h1>
@@ -109,6 +108,9 @@
                 <h1>Locations</h1>
                 <h2>Visit us at one of our branches across London</h2>
                 <div id='map'></div>
+                <div>
+                    <a id='add-shop' href='/shop/new'>Add new barber shop</a>
+                </div>
                 <div id='barber-shops'>
                     <% shops.map(shop=> { %>
                         <div class='shop'>
@@ -122,9 +124,7 @@
                         </div>
                         <%})%>
                 </div>
-                <div>
-                    <a id='add-shop' href='/shop/new'>Add new barber shop</a>
-                </div>
+
             </section>
         </main>
     </div>

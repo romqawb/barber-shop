@@ -14,6 +14,8 @@ body {
     height: 100vh;
 }
 
+
+/*MAIN PAGE*/
 .banner {
     color: white;
     height: 100vh;
@@ -24,6 +26,7 @@ body {
     width: 100%;
     background-image: url('../images/barber-shop-main.jpeg');
     background-position: center;
+    filter: grayscale(0.3)
 }
 
 .intro-text {
@@ -32,8 +35,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(0,0,0,0.7);
     padding: 2rem;
+    background: rgba(0,0,0,0.7);
 }
 
 .intro-text > h1 {
@@ -110,8 +113,6 @@ h3.scroll-arrow {
 .treatment:last-child {
     border-bottom: none;
 }
-
-
 
 .treatment-info > h2 {
     font-size: 2rem;
@@ -344,7 +345,6 @@ h3.scroll-arrow {
     text-align: center;
     color: white;
     padding: 0.1rem;
-    display: inline-block;
     width: 50%;
     float: left;
 }
@@ -397,7 +397,7 @@ h3.scroll-arrow {
     text-decoration: none;
     background-color: rgba(165,42,42,0.8);
     width: 50%;
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
     text-align: center;
     border-radius: 5px;
     color: white;
@@ -407,6 +407,27 @@ h3.scroll-arrow {
 #add-shop:hover {
     background-color: rgb(165,42,42)
 }
+
+
+/*Not Found page*/
+
+#not-found {
+    background-image: url('../images/barber-shop-main.jpeg');
+    background-position: center;
+    filter: grayscale(0.3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#not-found > div {
+    color: white;
+    font-size: 2.5rem;
+    background: rgba(0,0,0,0.7);
+    padding: 2rem;
+}
+
 
 
 @media (min-width: 700px) {
