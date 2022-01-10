@@ -24,7 +24,7 @@ body {
 .image-container {
     height: 100vh;
     width: 100%;
-    background-image: url('../images/barber-shop-main.jpeg');
+    background-image: url('../images/barber-shop-main_30.jpg');
     background-position: center;
     filter: grayscale(0.3)
 }
@@ -187,7 +187,7 @@ h3.scroll-arrow {
     min-height: 100vh;
     justify-content: center;
     align-items: center;
-    background-image: url('../images/barber-shop-chairs.jpg');
+    background-image: url('../images/barber-shop-chairs_30.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -426,6 +426,11 @@ h3.scroll-arrow {
     font-size: 2.5rem;
     background: rgba(0,0,0,0.7);
     padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
 }
 
 
