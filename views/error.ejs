@@ -1,6 +1,8 @@
 <%layout ('layouts/boilerplate') %>
     <section id='not-found'>
         <div>
-            <h1>404 Error. Something went wrong.</h1>
+            <h1>
+                <%=status%> Error. <%=message%>
+            </h1>
         </div>
     </section>

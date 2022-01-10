@@ -8,6 +8,7 @@ import geo from 'mapbox-geocoding';
 import ejsMate from 'ejs-mate';
 import methodOverride from 'method-override';
 import favicon from 'serve-favicon';
+import AppError from './helpers/AppError.js';
 
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
@@ -55,45 +56,74 @@ app.get('/shop/new', (req, res) => {
     res.render('shop/create');
 })
 
-app.get('/shop/:id/edit', async (req, res) => {
+app.get('/shop/:id/edit', async (req, res, next) => {
     const { id } = req.params;
-    const requestedShop = await Shop.findById(id);
+    try {
+        const requestedShop = await Shop.findById(id);
+    } catch (e) {
+        next(new AppError('Barber shop not found. Try again'))
+    }
     res.render('shop/edit', { requestedShop })
 })
 
-app.put('/shop/:id', async (req, res) => {
+app.put('/shop/:id', async (req, res, next) => {
     const { id } = req.params;
-    geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
-        const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
-        updatedShop.geometry = geoData.features[0].geometry;
-        await updatedShop.save()
-        res.redirect(`/shop/${id}`);
-    });
+    try {
+        geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
+            const updatedShop = await Shop.findByIdAndUpdate(id, req.body.shop);
+            updatedShop.geometry = geoData.features[0].geometry;
+            await updatedShop.save()
+            res.redirect(`/shop/${id}`);
+        });
+    } catch (e) {
+        next(new AppError('Couldn\'t update the requested barber shop. Try again'))
+    }
 })
 
-app.get('/shop/:id', async (req, res) => {
+app.get('/shop/:id', async (req, res, next) => {
     const { id } = req.params;
-    const requestedShop = await Shop.findById(id);
+    try {
+        const requestedShop = await Shop.findById(id);
+
+    } catch (e) {
+        console.log('e caught')
+        next(new AppError('Couldn\'t find the requested shop. Try again'))
+    }
     res.render('shop/view', { shop: requestedShop })
 })
 
-app.delete('/shop/:id', async (req, res) => {
+app.delete('/shop/:id', async (req, res, next) => {
     const { id } = req.params;
-    await Shop.findByIdAndDelete(id);
+    try {
+        await Shop.findByIdAndDelete(id);
+    }
+    catch (e) {
+        next(new AppError('Couldn\'t find the shop to delete.'))
+    }
     res.redirect('/');
 })
 
-app.post('/shop', async (req, res) => {
+app.post('/shop', async (req, res, next) => {
     const newShop = new Shop(req.body.shop);
-    geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
-        newShop.geometry = geoData.features[0].geometry;
-        await newShop.save()
-        res.redirect('/');
-    });
+    try {
+        geo.geocode('mapbox.places', req.body.shop.address, async (err, geoData) => {
+            newShop.geometry = geoData.features[0].geometry;
+            await newShop.save()
+            res.redirect('/');
+        });
+    } catch (e) {
+        next(new AppError('Couldn\'t create a shop. Try again'))
+    }
+
 })
 
-app.get('*', (req, res) => {
-    res.render('notFound')
+app.all('*', (req, res, next) => {
+    next(new AppError('Page not found', 404));
+})
+
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something went wrong' } = err;
+    res.status(status).render('error', { message, status });
 })
 
 app.listen(3000, () => {
