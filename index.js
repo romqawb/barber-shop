@@ -60,10 +60,11 @@ app.get('/shop/:id/edit', async (req, res, next) => {
     const { id } = req.params;
     try {
         const requestedShop = await Shop.findById(id);
+        res.render('shop/edit', { requestedShop })
     } catch (e) {
         next(new AppError('Barber shop not found. Try again'))
     }
-    res.render('shop/edit', { requestedShop })
+
 })
 
 app.put('/shop/:id', async (req, res, next) => {
@@ -84,23 +85,24 @@ app.get('/shop/:id', async (req, res, next) => {
     const { id } = req.params;
     try {
         const requestedShop = await Shop.findById(id);
+        res.render('shop/view', { shop: requestedShop })
 
     } catch (e) {
-        console.log('e caught')
         next(new AppError('Couldn\'t find the requested shop. Try again'))
     }
-    res.render('shop/view', { shop: requestedShop })
+
 })
 
 app.delete('/shop/:id', async (req, res, next) => {
     const { id } = req.params;
     try {
         await Shop.findByIdAndDelete(id);
+        res.redirect('/');
     }
     catch (e) {
         next(new AppError('Couldn\'t find the shop to delete.'))
     }
-    res.redirect('/');
+
 })
 
 app.post('/shop', async (req, res, next) => {
