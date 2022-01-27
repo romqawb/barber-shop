@@ -265,8 +265,8 @@ h3.scroll-arrow {
     letter-spacing: 1px;
 }
 
-/*CREATE NEW SHOP*/
-.create-shop, .view-shop {
+/*CREATE NEW SHOP AND EDIT SHOP*/
+.create-shop, .view-shop, .edit-shop {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -277,7 +277,7 @@ h3.scroll-arrow {
     background-size: cover;
 }
 
-#create-shop, #view-shop {
+#create-shop, #view-shop, #edit-shop {
     width: 450px;
     background-color: rgba(0,0,0,0.8);
     margin: 1rem 0;
@@ -294,7 +294,7 @@ h3.scroll-arrow {
     margin: 0 0.5rem; 
 }
 
-#create-shop > h2 {
+#create-shop > h2, #edit-shop > h2 {
     color: brown;
     font-size: 2.5rem;
     padding: 0.25rem 2rem;
@@ -312,13 +312,13 @@ h3.scroll-arrow {
 .link-back:hover {
     background-color: rgba(0,0,0,1);
 }
-#create-shop > div {
+#create-shop > div, #edit-shop > div {
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
 }
 
-#create-shop > div > label {
+#create-shop > div > label, #edit-shop > div > label {
     font-size: 1.5rem;
     letter-spacing: 1px;
     display: block;
@@ -327,7 +327,7 @@ h3.scroll-arrow {
 }
 
 
-#create-shop > div > input {
+#create-shop > div > input, #edit-shop > div > input {
     height: 2.5rem;
     width: 90%;
     margin: 0 auto;
@@ -344,13 +344,13 @@ h3.scroll-arrow {
     text-transform: uppercase;
 }
 
-#create-shop > div > input:focus {
+#create-shop > div > input:focus, #edit-shop > div > input:focus {
     outline-color: brown;
     outline: brown;
     border: 1px solid brown;
 }
 
-#create-shop > div > button {
+#create-shop > div > button, #edit-shop > div > button {
     width: 90%;
     margin: 1rem auto 0 auto;
     padding: 1rem;
@@ -363,30 +363,28 @@ h3.scroll-arrow {
     border: none;
 }
 
-#create-shop > div > button:hover {
+#create-shop > div > button:hover, #edit-shop > div > button:hover {
     cursor: pointer;
     background-color: brown;
 }
 
- /* .section-description {
-    color: brown;
-} */
-
-/* .section-description > p {
+.edit-shop > h1 {
     text-align: center;
     color: white;
-} */
+    font-size: 3rem;
+    background-color: rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    margin: 0 0.5rem; 
+}
 
-/* #create-shop > .section-description > label {
+.edit-shop-header {
+    padding: 0;
     font-size: 2.5rem;
-    padding: 0.5rem 0;
-} */
-
-/* #create-shop > .section-description > h2 {
     text-align: center;
-    font-size: 2.5rem;
-    padding: 0 1rem 1rem 1rem;
-} */
+    color: brown;
+}
+
+
 
 /*VIEW SHOP*/
 
