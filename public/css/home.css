@@ -38,12 +38,11 @@ body {
     display: flex;
     justify-content: center;
     animation: appear 1.5s ease-in;
+    margin-top: 1rem;
 }
 
 #navigation > ul > li {
     list-style: none;
-    padding: 1rem;
-    background: rgba(0,0,0,0.7);
     margin: 0 1rem;
 }
 
@@ -51,11 +50,18 @@ body {
     text-decoration: none;
     color: white;
     font-size: 1.25rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.5);
+    
 }
 
-.nav-link:hover {
+#navigation > ul > li:hover .nav-link {
     border-bottom: 2px solid brown;
+    background:rgba(0,0,0,1);
+
 }
+
+
 
 .intro-text {
     padding: 2rem;
@@ -64,7 +70,7 @@ body {
     background: rgba(0,0,0,0.7);
 }
 
-#divider {
+hr.divider {
     border: 2px solid brown;
     border-radius: 5px;
 }
@@ -131,6 +137,9 @@ h3.scroll-arrow {
     padding: 1rem;
     width: 100%;
     border-bottom: 1px dashed brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .treatment:last-child {
@@ -183,10 +192,10 @@ h3.scroll-arrow {
 
 /* Locations */
 #locations {
-    /* min-height: 100vh; */
     background-color: black;
     color: beige;
     border: 1px solid black;
+    padding: 1rem 0;
 }
 
 #locations > h3 {
@@ -201,117 +210,6 @@ h3.scroll-arrow {
     border: 2px solid rgba(165,42,42,0.7);
 }
 
-
-/*create new shop form*/
-.create-shop{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../images/barber-shop-chairs_30.jpg');
-    background-position: center;
-    background-size: cover;
-}
-
-#create-shop {
-    width: 450px;
-    background-color: rgba(0,0,0,0.7);
-    margin: 1rem 0;
-    padding: 1.5rem 0;
-    color: white;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 1px black, 2px 2px 2px black;
-}
-.create-shop > div > h1 {
-    text-align: center;
-    color: white;
-    font-size: 3rem;
-    background-color: rgba(0,0,0,0.7);
-    padding: 1.5rem;
-    margin: 0 0.5rem; 
-}
-
-.create-shop > div > a {
-    text-decoration: none;
-    color: white;
-    font-size: 3rem;
-    padding: 1.5rem;
-    background-color: rgba(0,0,0,0.7);
-    display: block;
-}
-
-.create-shop > div > a:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-#create-shop > div {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem;
-}
-
-#create-shop > div > label {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-}
-
-
-#create-shop > div > input {
-    height: 2.5rem;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px;
-    color: brown;
-}
-
-#create-shop > div > input::placeholder {
-    color: brown; 
-}
-
-#create-shop > div > input:focus {
-    outline-color: brown;
-}
-
-#create-shop > div > button {
-    width: 90%;
-    margin: 1rem auto 0 auto;
-    padding: 1rem;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-family: 'Staatliches', cursive;
-    border-radius: 5px;
-    background-color: rgba(165,42,42,0.9);
-    color: white;
-    border: none;
-}
-
-#create-shop > div > button:hover {
-    cursor: pointer;
-    background-color: brown;
-}
-
- .section-description {
-    color: brown;
-}
-
-.section-description > p {
-    text-align: center;
-    color: white;
-}
-#create-shop > .section-description > label {
-    font-size: 2.5rem;
-    padding: 0.5rem 0;
-}
-
-#create-shop > .section-description > h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 0 1rem 1rem 1rem;
-}
-
 /* Barber shops on a main page */
 
 #barber-shops {
@@ -319,17 +217,21 @@ h3.scroll-arrow {
     flex-wrap: wrap;
     width: 90%;
     margin: 1rem auto;
+    justify-content: space-around;
 
 }
 
 .shop {
-    width: 90%;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%;
     margin: 1rem auto;
     box-shadow: 0 0 5px rgba(0,0,0,0.9) inset;
-    background-color: beige;
+    background: rgba(245,245,220, 0.9);
     color: black;
     text-align: center;
     padding: 1rem;
+    display: flex;
 }
 
 .shop > h2, .shop > h4 {
@@ -363,7 +265,152 @@ h3.scroll-arrow {
     letter-spacing: 1px;
 }
 
-/*view shop*/
+/*CREATE NEW SHOP*/
+.create-shop, .view-shop {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/barber-shop-chairs_30.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#create-shop, #view-shop {
+    width: 450px;
+    background-color: rgba(0,0,0,0.8);
+    margin: 1rem 0;
+    padding: 1rem 0;
+    color: white;
+    letter-spacing: 1px;
+}
+.create-shop > h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    background-color: rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    margin: 0 0.5rem; 
+}
+
+#create-shop > h2 {
+    color: brown;
+    font-size: 2.5rem;
+    padding: 0.25rem 2rem;
+}
+
+.link-back {
+    text-decoration: none;
+    color: white;
+    font-size: 3rem;
+    padding: 1.5rem;
+    background-color: rgba(0,0,0,0.8);
+    display: block;
+}
+
+.link-back:hover {
+    background-color: rgba(0,0,0,1);
+}
+#create-shop > div {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+
+#create-shop > div > label {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    display: block;
+    width: 90%;
+    margin: 0.25rem auto;
+}
+
+
+#create-shop > div > input {
+    height: 2.5rem;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    color: brown;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+#create-shop > div > input::placeholder {
+    color: brown; 
+    text-transform: uppercase;
+}
+
+#create-shop > div > input:focus {
+    outline-color: brown;
+    outline: brown;
+    border: 1px solid brown;
+}
+
+#create-shop > div > button {
+    width: 90%;
+    margin: 1rem auto 0 auto;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: 'Staatliches', cursive;
+    border-radius: 5px;
+    background-color: rgba(165,42,42,0.9);
+    color: white;
+    border: none;
+}
+
+#create-shop > div > button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+ /* .section-description {
+    color: brown;
+} */
+
+/* .section-description > p {
+    text-align: center;
+    color: white;
+} */
+
+/* #create-shop > .section-description > label {
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+} */
+
+/* #create-shop > .section-description > h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 0 1rem 1rem 1rem;
+} */
+
+/*VIEW SHOP*/
+
+.view-shop > h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    background-color: rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    margin: 0 0.5rem; 
+}
+
+.view-shop-header {
+    padding: 0;
+    font-size: 2.5rem;
+    text-align: center;
+    color: brown;
+}
+
+#shop-address {
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+    text-align: center;
+}
 
 .price-list {
     list-style: none;
@@ -374,22 +421,18 @@ h3.scroll-arrow {
     text-align: center;
     color: white;
     padding: 0.1rem;
-    width: 50%;
-    float: left;
 }
 
-#create-shop > #shop-buttons {
-    flex-direction: row;
-    width: 100%;
-    margin: 0;
-    text-transform: uppercase;
+#view-shop-control-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5rem;
 }
 
-#shop-buttons > div, #shop-buttons > form {
-    width: 40%;
+#view-shop-control-buttons > div, #view-shop-control-buttons > form {
+    width: 46%;
     text-align: center;
     border-radius: 5px;
-    margin: 0 auto;
 }
 
 #shop-edit > a, #shop-delete > button {
@@ -486,7 +529,7 @@ footer {
     }
 
     .shop {
-        width: 25%;
-        margin: calc(10% / 6);
+        width: 24%;
+        /* margin: calc(10% / 6); */
     }
 }

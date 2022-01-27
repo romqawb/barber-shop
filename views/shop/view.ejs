@@ -1,22 +1,16 @@
 <%layout ('layouts/boilerplate') %>
-    <div class='create-shop'>
-        <div>
-            <h1>
-                <%=shop.name%>
-            </h1>
-        </div>
-        <div id='create-shop'>
-            <div class='section-description'>
-                <h2>Location</h2>
-                <div id='map'></div>
-            </div>
-            <div class='section-description'>
-                <p>
-                    <%= shop.address %>
-                </p>
-            </div>
-            <div class='section-description'>
-                <h2>Price list</h2>
+    <div class='view-shop'>
+        <h1>
+            <%=shop.name%>
+        </h1>
+        <div id='view-shop'>
+            <h2 class='view-shop-header'>Location</h2>
+            <div id='map'></div>
+            <p id='shop-address'>
+                <%= shop.address %>
+            </p>
+            <div class='view-shop-prices'>
+                <h2 class='view-shop-header'>Price list</h2>
                 <ul class='price-list'>
                     <li>
                         The Cut: <%=shop.prices.cut%>$
@@ -32,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            <div id='shop-buttons'>
+            <div id='view-shop-control-buttons'>
                 <div id='shop-edit'>
                     <a href='/shop/<%=shop._id%>/edit'>Edit</a>
                 </div>
@@ -42,7 +36,7 @@
             </div>
         </div>
         <div>
-            <a href='http://localhost:3000'>Go Back</a>
+            <a class='link-back' href='http://localhost:3000'>Go Back</a>
         </div>
     </div>
     <script>

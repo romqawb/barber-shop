@@ -1,12 +1,8 @@
 <%layout ('layouts/boilerplate') %>
     <div class='create-shop'>
-        <div>
-            <h1>Create new barber shop</h1>
-        </div>
+        <h1>Create new barber shop</h1>
         <form id='create-shop' action='/shop' method='POST'>
-            <div class='section-description'>
-                <label>Shop info</label>
-            </div>
+            <h2>Shop info</h2>
             <div>
                 <label for='name'>Shop name:</label>
                 <input type='text' id='name' name='shop[name]' placeholder='Enter shop name' required />
@@ -15,16 +11,14 @@
                 <label for='address'>Shop address:</label>
                 <input type='text' id='address' name='shop[address]' placeholder='Enter shop address' required />
             </div>
-            <div class='section-description'>
-                <label>Prices for services</label>
-            </div>
+            <h2>Prices for services</h2>
             <div>
                 <label for='cut'>Cut price:</label>
                 <input type='number' id='cut' name='shop[prices][cut]' placeholder='Enter price for a cut' />
             </div>
             <div>
                 <label for='beard'>Beard price:</label>
-                <input type='number' id='beard' name='shop[prices][beard]' placeholder='Enter price for a bear' />
+                <input type='number' id='beard' name='shop[prices][beard]' placeholder='Enter price for a beard' />
             </div>
             <div>
                 <label for='shave'>Shave price:</label>
@@ -39,6 +33,6 @@
             </div>
         </form>
         <div>
-            <a href='http://localhost:3000'>Go Back</a>
+            <a class='link-back' href='http://localhost:3000'>Go Back</a>
         </div>
     </div>
