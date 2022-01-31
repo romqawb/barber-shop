@@ -210,29 +210,47 @@ h3.scroll-arrow {
     border: 2px solid rgba(165,42,42,0.7);
 }
 
+#cluster-map {
+    height: 300px;
+    width: 98%;
+    margin: 0rem auto;
+    border: 2px solid rgba(165,42,42,0.7);
+}
+
 /* Barber shops on a main page */
 
 #barber-shops {
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
-    margin: 1rem auto;
-    justify-content: space-around;
+    width: 100%;
+    margin: 1rem 0;
 
 }
 
 .shop {
     flex-direction: column;
     justify-content: space-between;
-    width: 45%;
-    margin: 1rem auto;
-    box-shadow: 0 0 5px rgba(0,0,0,0.9) inset;
+    width: 50%;
+    height: 200px;
+    border: 1px solid brown;
+
     background: rgba(245,245,220, 0.9);
     color: black;
     text-align: center;
     padding: 1rem;
     display: flex;
+    filter: grayscale(0.2)
 }
+
+#barber-shops:last-child() {
+    border-right: none;
+}
+
+.shop:hover {
+    filter: grayscale(0);
+    cursor: pointer;
+}
+
 
 .shop > h2, .shop > h4 {
     letter-spacing: 1px;
@@ -263,6 +281,83 @@ h3.scroll-arrow {
     margin: 0 auto;
     padding: 1rem;
     letter-spacing: 1px;
+}
+
+
+.add-shop {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(112,128,144,0.5);
+}
+
+#add-shop {
+    display: block;
+    text-decoration: none;
+    background-color: rgba(165,42,42,0.8);
+    text-align: center;
+    border-radius: 25px;
+    border: 1px solid brown;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.75rem;
+}
+
+#add-shop:hover {
+    background-color: rgb(165,42,42)
+}
+
+/* CONTACT US */
+
+#contact > h3, #contact > a {
+    text-align: center;
+    padding: 0.5rem;
+
+}
+
+#contact > a {
+    text-decoration: none;
+    color: brown;
+    display: block;
+}
+
+form > label {
+    display: block;
+    text-align: center;
+    
+}
+
+form > textarea {
+    display: block;
+    height: 200px;
+    width: 80%;
+    max-width: 500px;
+    resize: none;
+    margin: 0.5rem auto;
+    padding: 1rem;
+    outline-color: brown;
+}
+
+form > button {
+    display: block;
+    margin: 0.5rem auto;
+    background-color: rgba(165,42,42,0.8);;
+    padding: 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    font-family: 'Staatliches', cursive;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    width: 30%;
+    transition: all 0.2s ease-in-out;
+}
+
+form > button:hover {
+    background-color:rgba(162,42,42,1);
+    cursor: pointer;
+    
 }
 
 /*CREATE NEW SHOP AND EDIT SHOP*/
@@ -461,23 +556,6 @@ h3.scroll-arrow {
     background-color: rgb(128,0,0);
 }
 
-#add-shop {
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    background-color: rgba(165,42,42,0.8);
-    width: 50%;
-    margin: 2rem auto 0 auto;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-    font-size: 1.5rem;
-}
-
-#add-shop:hover {
-    background-color: rgb(165,42,42)
-}
-
 
 /*Not Found page*/
 
@@ -527,7 +605,6 @@ footer {
     }
 
     .shop {
-        width: 24%;
-        /* margin: calc(10% / 6); */
+        width: 25%;
     }
 }
