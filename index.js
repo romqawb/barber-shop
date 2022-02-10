@@ -11,17 +11,18 @@ import favicon from 'serve-favicon';
 import AppError from './helpers/AppError.js';
 import nodemailer from 'nodemailer'
 
-dotenv.config()
-geo.setAccessToken(process.env.MAPBOX_TOKEN)
+// dotenv.config()
+// geo.setAccessToken(process.env.MAPBOX_TOKEN)
+geo.setAccessToken(MAPBOX_TOKEN)
 const __dirname = path.resolve();
 const app = express();
 
 //DB
-const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
+// const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
+const db = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_CLUSTER}/${DB_COLLECTION}?retryWrites=true&w=majority`;
 mongoose.connect(db)
     .then(() => console.log('DB connected'))
     .catch(e => console.log(e))
-
 
 //APP SETTINGS
 app.set('view engine', 'ejs');
@@ -32,7 +33,6 @@ app.use(express.json())
 app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
 app.use(favicon(path.join(__dirname, 'public/images/favicon.png')))
-
 
 //ROUTES
 app.get('/', async (req, res) => {
