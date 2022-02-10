@@ -9,32 +9,32 @@ import ejsMate from 'ejs-mate';
 import methodOverride from 'method-override';
 import favicon from 'serve-favicon';
 import AppError from './helpers/AppError.js';
+import nodemailer from 'nodemailer'
 
 dotenv.config()
 geo.setAccessToken(process.env.MAPBOX_TOKEN)
-
 const __dirname = path.resolve();
 const app = express();
 
 //DB
-const db = mongoose.connection;
-try {
-    await mongoose.connect('mongodb://localhost:27017/barber-shop')
-} catch (e) {
-    console.log(e)
-}
-// db.on('error', console.error.bind(console, 'connection error'))
-// db.once('open', () => console.log('DB connected successfully!'))
+const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
+mongoose.connect(db)
+    .then(() => console.log('DB connected'))
+    .catch(e => console.log(e))
 
 
+//APP SETTINGS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
 app.use(favicon(path.join(__dirname, 'public/images/favicon.png')))
 
+
+//ROUTES
 app.get('/', async (req, res) => {
     const shops = await Shop.find({})
     const minPrices = {
@@ -116,7 +116,30 @@ app.post('/shop', async (req, res, next) => {
     } catch (e) {
         next(new AppError('Couldn\'t create a shop. Try again'))
     }
+})
 
+app.post('/message', async (req, res) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_ADDRESS,
+            pass: process.env.EMAIL_PASSWORD
+        }
+    })
+    const mailOptions = {
+        from: process.env.EMAIL_ADDRESS,
+        to: process.env.EMAIL_TO_ADDRESS,
+        subject: 'Email sent via contact form on barber shop page',
+        text: req.body.message
+    }
+    transporter.sendMail(mailOptions, (e, info) => {
+        if (e) {
+            console.log(e);
+        } else {
+            console.log('Email sent')
+        }
+    })
+    res.send('you did hit /message post route');
 })
 
 app.all('*', (req, res, next) => {
@@ -129,5 +152,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(3000, () => {
-    console.log('up');
+    console.log('Server is running on port 3000');
 })

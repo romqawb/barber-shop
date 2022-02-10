@@ -278,6 +278,9 @@ h3.scroll-arrow {
 }
 
 #no-shops-message {
+    width: 100%;
+    text-align: center;
+    display: block;
     margin: 0 auto;
     padding: 1rem;
     letter-spacing: 1px;
@@ -358,6 +361,12 @@ form > button:hover {
     background-color:rgba(162,42,42,1);
     cursor: pointer;
     
+}
+
+#formSubmitMsg {
+    display: block;
+    text-align: center;
+    padding: 1rem;
 }
 
 /*CREATE NEW SHOP AND EDIT SHOP*/
@@ -520,6 +529,7 @@ form > button:hover {
     display: flex;
     justify-content: space-around;
     margin: 0.5rem;
+    align-items: center;
 }
 
 #view-shop-control-buttons > div, #view-shop-control-buttons > form {
@@ -537,8 +547,7 @@ form > button:hover {
     background-color: rgba(165,42,42,0.7);
     outline: none;
     border: none;
-    line-height: 40px;
-    height: 40px;
+    padding: 0.75rem;
     font-family: 'Staatliches', cursive;
     font-size: 1rem;
     text-shadow: none;
