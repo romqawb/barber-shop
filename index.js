@@ -122,13 +122,13 @@ app.post('/message', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_ADDRESS,
-            pass: process.env.EMAIL_PASSWORD
+            user: EMAIL_ADDRESS,
+            pass: EMAIL_PASSWORD
         }
     })
     const mailOptions = {
-        from: process.env.EMAIL_ADDRESS,
-        to: process.env.EMAIL_TO_ADDRESS,
+        from: EMAIL_ADDRESS,
+        to: EMAIL_TO_ADDRESS,
         subject: 'Email sent via contact form on barber shop page',
         text: req.body.message
     }
