@@ -11,15 +11,16 @@ import favicon from 'serve-favicon';
 import AppError from './helpers/AppError.js';
 import nodemailer from 'nodemailer'
 
-// dotenv.config()
-// geo.setAccessToken(process.env.MAPBOX_TOKEN)
-geo.setAccessToken(MAPBOX_TOKEN)
+
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config()
+}
+geo.setAccessToken(process.env.MAPBOX_TOKEN)
 const __dirname = path.resolve();
 const app = express();
 
 //DB
-// const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
-const db = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_CLUSTER}/${DB_COLLECTION}?retryWrites=true&w=majority`;
+const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
 mongoose.connect(db)
     .then(() => console.log('DB connected'))
     .catch(e => console.log(e))
@@ -122,13 +123,13 @@ app.post('/message', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: EMAIL_ADDRESS,
-            pass: EMAIL_PASSWORD
+            user: process.env.EMAIL_ADDRESS,
+            pass: process.env.EMAIL_PASSWORD
         }
     })
     const mailOptions = {
-        from: EMAIL_ADDRESS,
-        to: EMAIL_TO_ADDRESS,
+        from: process.env.EMAIL_ADDRESS,
+        to: process.env.EMAIL_TO_ADDRESS,
         subject: 'Email sent via contact form on barber shop page',
         text: req.body.message
     }
@@ -151,6 +152,6 @@ app.use((err, req, res, next) => {
     res.status(status).render('error', { message, status });
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running on port 3000');
 })

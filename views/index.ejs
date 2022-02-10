@@ -158,7 +158,7 @@
         <p>Roman Sukys &copy; 2022</p>
     </footer>
     <script>
-        const mapToken = '<%-MAPBOX_TOKEN%>';
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
         const data = '<%- JSON.stringify(shops) %>';
     </script>
     <script src='/js/clusterMap.js'></script>
